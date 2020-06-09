@@ -19,16 +19,16 @@ the fields are marked with a corresponding (i) icon.
 ### Screenshots
 
 #### Nurse: Enter Documentation 
-[nurse-enter-documentation](/img/screenshots/nurse-enter-documentation.png)
+![nurse-enter-documentation](/img/screenshots/nurse-enter-documentation.png)
 
 #### Vet: Comments Management
-[nurse-enter-documentation](/img/screenshots/vet-comments-management.png)
+![nurse-enter-documentation](/img/screenshots/vet-comments-management.png)
 
 #### Vet: Create Comment
-[nurse-enter-documentation](/img/screenshots/create-comment.png)
+![nurse-enter-documentation](/img/screenshots/create-comment.png)
 
 #### Nurse: Comments Management
-[show-comment](/img/screenshots/show-comment.png)
+![show-comment](/img/screenshots/show-comment.png)
 
 ### How does it work?
 
