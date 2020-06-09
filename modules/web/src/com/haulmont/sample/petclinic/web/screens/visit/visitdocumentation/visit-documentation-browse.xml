@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+  xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+  caption="msg://visitDocumentationBrowse.caption"
+  focusComponent="visitDocumentationsTable"
+  messagesPack="com.haulmont.sample.petclinic.web.screens.visit.visitdocumentation">
+  <data readOnly="true">
+    <collection id="visitDocumentationsDc"
+      class="com.haulmont.sample.petclinic.entity.visit.VisitDocumentation">
+      <view extends="_local">
+        <property name="visit" view="_minimal"/>
+      </view>
+      <loader id="visitDocumentationsDl">
+        <query>
+          <![CDATA[select e from petclinic_VisitDocumentation e]]>
+        </query>
+      </loader>
+    </collection>
+  </data>
+  <dialogMode height="600"
+    width="800"/>
+  <layout expand="visitDocumentationsTable"
+    spacing="true">
+    <filter id="filter"
+      applyTo="visitDocumentationsTable"
+      dataLoader="visitDocumentationsDl">
+      <properties include=".*"/>
+    </filter>
+    <groupTable id="visitDocumentationsTable"
+      width="100%"
+      dataContainer="visitDocumentationsDc">
+      <actions>
+        <action id="create" type="create"/>
+        <action id="edit" type="edit"/>
+        <action id="remove" type="remove"/>
+      </actions>
+      <columns>
+        <column id="visit"/>
+        <column id="status"/>
+        <column id="rating"/>
+        <column id="summary" maxTextLength="30"/>
+      </columns>
+      <rowsCount/>
+      <buttonsPanel id="buttonsPanel"
+        alwaysVisible="true">
+        <button id="createBtn" action="visitDocumentationsTable.create"/>
+        <button id="editBtn" action="visitDocumentationsTable.edit"/>
+        <button id="removeBtn" action="visitDocumentationsTable.remove"/>
+      </buttonsPanel>
+    </groupTable>
+    <hbox id="lookupActions" spacing="true" visible="false">
+      <button action="lookupSelectAction"/>
+      <button action="lookupCancelAction"/>
+    </hbox>
+  </layout>
+</window>

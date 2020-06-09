@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://visitDocumentationEdit.caption"
+        focusComponent="contentTabSheet"
+        messagesPack="com.haulmont.sample.petclinic.web.screens.visit.visitdocumentation">
+    <data>
+        <instance id="visitDocumentationDc"
+                  class="com.haulmont.sample.petclinic.entity.visit.VisitDocumentation">
+            <view extends="_local">
+                <property name="visit" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+        <collection id="commentsDc"
+                    class="com.haulmont.sample.petclinic.entity.EntityAttributeComment" view="_local">
+        </collection>
+    </data>
+    <actions>
+        <action id="approve" caption="msg://approve" icon="CHECK_CIRCLE"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <tabSheet id="contentTabSheet">
+            <tab id="contentTab" spacing="true" margin="true" caption="msg://content">
+                <form id="contentForm" dataContainer="visitDocumentationDc" captionPosition="TOP">
+                    <column width="350px">
+                        <lookupField id="statusField" property="status" editable="false"/>
+                        <pickerField id="visitField" property="visit">
+                            <actions>
+                                <action id="lookup" type="picker_lookup"/>
+                                <action id="clear" type="picker_clear"/>
+                            </actions>
+                        </pickerField>
+                        <textField id="summaryField" property="summary"/>
+                        <textArea id="diagnoseField" property="diagnose" rows="5" width="100%"/>
+                        <textField id="internalCommentField" property="internalComment"/>
+                    </column>
+                </form>
+            </tab>
+            <tab id="feedbackTab" spacing="true" margin="true" caption="msg://feedback">
+                <form id="feedbackForm" dataContainer="visitDocumentationDc" captionPosition="TOP">
+                    <column width="350px">
+                        <textArea id="petFeedbackField" property="petFeedback" rows="5"/>
+                        <textArea id="ownerFeedbackField" property="ownerFeedback" rows="5"/>
+                        <textField id="ratingField" property="rating"/>
+                    </column>
+                </form>
+            </tab>
+            <tab id="commentsManagementTab" spacing="true" margin="true" caption="msg://commentsManagement">
+                <table id="commentsTable" dataContainer="commentsDc" width="100%" height="200px">
+                    <actions>
+                        <action id="createAttributeComment" caption="msg://createAttributeComment"
+                                icon="font-icon:COMMENT_O"/>
+                        <action id="resolveComment" caption="msg://resolveComment" icon="CHECK_CIRCLE_O"/>
+                        <action id="edit" type="edit">
+                            <properties>
+                                <property name="openMode" value="DIALOG"/>
+                            </properties>
+                        </action>
+                    </actions>
+                    <columns>
+                        <column id="entityAttribute"/>
+                        <column id="comment"/>
+                    </columns>
+                    <rows/>
+                    <buttonsPanel>
+                        <button id="createAttributeCommentBtn" action="commentsTable.createAttributeComment"/>
+                        <button id="resolveCommentBtn" action="commentsTable.resolveComment"/>
+                        <button id="editBtn" action="commentsTable.edit"/>
+                    </buttonsPanel>
+                </table>
+            </tab>
+        </tabSheet>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+            <button id="approveBtn" action="approve" stylename="secondary"/>
+        </hbox>
+    </layout>
+</window>

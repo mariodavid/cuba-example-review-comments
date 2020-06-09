@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="commentField"
+        messagesPack="com.haulmont.sample.petclinic.web.screens.entityattributecomment">
+    <data>
+        <instance id="entityAttributeCommentDc"
+                  class="com.haulmont.sample.petclinic.entity.EntityAttributeComment"
+                  view="_local">
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <textArea id="commentField" property="comment" dataContainer="entityAttributeCommentDc" rows="5" width="100%"/>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

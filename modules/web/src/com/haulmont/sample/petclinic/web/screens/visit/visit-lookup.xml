@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://browseCaption"
+        focusComponent="visitsTable"
+        messagesPack="com.haulmont.sample.petclinic.web.screens.visit">
+    <data readOnly="true">
+        <collection id="visitsDc"
+                    class="com.haulmont.sample.petclinic.entity.visit.Visit"
+                    view="visit-with-pet">
+            <loader id="visitsDl">
+                <query>
+                    <![CDATA[select e from petclinic_Visit e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="visitsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="visitsTable"
+                dataLoader="visitsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="visitsTable"
+                    width="100%"
+                    dataContainer="visitsDc">
+            <actions>
+            </actions>
+            <columns>
+                <column id="pet"/>
+                <column id="type"/>
+                <column id="visitStart"/>
+                <column id="visitEnd"/>
+                <column id="description"/>
+                <column id="treatmentStatus"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -116,3 +116,45 @@ create table PETCLINIC_VETERINARIAN_SPECIALTY_LINK (
     primary key (VET_ID, SPECIALTY_ID)
 )^
 -- end PETCLINIC_VETERINARIAN_SPECIALTY_LINK
+-- begin PETCLINIC_VISIT_DOCUMENTATION
+create table PETCLINIC_VISIT_DOCUMENTATION (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    STATUS varchar(50) not null,
+    INTERNAL_COMMENT longvarchar,
+    PET_FEEDBACK longvarchar,
+    OWNER_FEEDBACK longvarchar,
+    SUMMARY varchar(4000),
+    DIAGNOSE longvarchar,
+    VISIT_ID varchar(36) not null,
+    RATING integer,
+    --
+    primary key (ID)
+)^
+-- end PETCLINIC_VISIT_DOCUMENTATION
+-- begin PETCLINIC_ENTITY_ATTRIBUTE_COMMENT
+create table PETCLINIC_ENTITY_ATTRIBUTE_COMMENT (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    ENTITY varchar(255),
+    ENTITY_ATTRIBUTE varchar(255),
+    --
+    REFERS_TO varchar(255),
+    COMMENT_ longvarchar,
+    --
+    primary key (ID)
+)^
+-- end PETCLINIC_ENTITY_ATTRIBUTE_COMMENT

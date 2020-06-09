@@ -10,12 +10,14 @@ import com.haulmont.cuba.security.entity.User;
 import com.haulmont.cuba.security.role.EntityAttributePermissionsContainer;
 import com.haulmont.cuba.security.role.EntityPermissionsContainer;
 import com.haulmont.cuba.security.role.ScreenPermissionsContainer;
+import com.haulmont.sample.petclinic.entity.EntityAttributeComment;
 import com.haulmont.sample.petclinic.entity.owner.Owner;
 import com.haulmont.sample.petclinic.entity.pet.Pet;
 import com.haulmont.sample.petclinic.entity.pet.PetType;
 import com.haulmont.sample.petclinic.entity.veterinarian.Specialty;
 import com.haulmont.sample.petclinic.entity.veterinarian.Veterinarian;
 import com.haulmont.sample.petclinic.entity.visit.Visit;
+import com.haulmont.sample.petclinic.entity.visit.VisitDocumentation;
 
 @Role(name = VeterinarianRole.NAME)
 public class VeterinarianRole extends AnnotatedRoleDefinition {
@@ -29,6 +31,8 @@ public class VeterinarianRole extends AnnotatedRoleDefinition {
   @EntityAccess(entityClass = Specialty.class, operations = {EntityOp.CREATE, EntityOp.READ, EntityOp.UPDATE, EntityOp.DELETE})
   @EntityAccess(entityClass = Veterinarian.class, operations = {EntityOp.CREATE, EntityOp.READ, EntityOp.UPDATE, EntityOp.DELETE})
   @EntityAccess(entityClass = User.class, operations = {EntityOp.CREATE, EntityOp.READ, EntityOp.UPDATE, EntityOp.DELETE})
+  @EntityAccess(entityClass = EntityAttributeComment.class, operations = {EntityOp.CREATE, EntityOp.READ, EntityOp.UPDATE, EntityOp.DELETE})
+  @EntityAccess(entityClass = VisitDocumentation.class, operations = {EntityOp.CREATE, EntityOp.READ, EntityOp.UPDATE, EntityOp.DELETE})
   @Override
   public EntityPermissionsContainer entityPermissions() {
     return super.entityPermissions();
@@ -43,6 +47,9 @@ public class VeterinarianRole extends AnnotatedRoleDefinition {
   @EntityAttributeAccess(entityClass = Veterinarian.class, modify = "*")
   @EntityAttributeAccess(entityClass = User.class, modify = "*")
   @EntityAttributeAccess(entityClass = Visit.class, modify = "pet") // TODO: remove when https://github.com/cuba-platform/cuba/issues/2869 is solved
+
+  @EntityAttributeAccess(entityClass = EntityAttributeComment.class, modify = "*")
+  @EntityAttributeAccess(entityClass = VisitDocumentation.class, modify = "*")
   @Override
   public EntityAttributePermissionsContainer entityAttributePermissions() {
     return super.entityAttributePermissions();
@@ -52,6 +59,7 @@ public class VeterinarianRole extends AnnotatedRoleDefinition {
   @ScreenAccess(screenIds = {
       "petclinic_myVisits",
       "petclinic_Visit.browse",
+      "petclinic_Visit.lookup",
       "petclinic_Visit.edit",
       "petclinic_Pet.browse",
       "petclinic_Pet.edit",
@@ -64,6 +72,10 @@ public class VeterinarianRole extends AnnotatedRoleDefinition {
       "petclinic_Specialty.browse",
       "petclinic_Specialty.lookup",
       "petclinic_Specialty.edit",
+
+      "petclinic_VisitDocumentation.edit",
+      "petclinic_VisitDocumentation.browse",
+      "petclinic_EntityAttributeComment.edit",
   })
   @Override
   public ScreenPermissionsContainer screenPermissions() {
