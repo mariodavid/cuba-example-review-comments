@@ -18,6 +18,8 @@ the fields are marked with a corresponding (i) icon.
 
 ### Screenshots
 
+![Overview](/img/overview.gif)
+
 #### Nurse: Enter Documentation 
 ![nurse-enter-documentation](/img/screenshots/nurse-enter-documentation.png)
 
