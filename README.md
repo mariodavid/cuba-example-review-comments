@@ -7,11 +7,11 @@
 This examples shows how to create review comments for fields on an entity. 
 The example contains the following business case:
 
-Nurses have to enter a visit documentation after a Pet visit is finished. When they enter the information
+> Nurses have to enter a visit documentation after a Pet visit is finished. When they enter the information
 this documentation has to be reviewed by a Veterinarian. The Vet can take a look at the documentation
 and add comments to the fields that were entered by the Nurse.
 
-If there is anything to change, the Vet adds a Comment to a Field. Then the nurse can look at the Documentation once
+> If there is anything to change, the Vet adds a Comment to a Field. Then the nurse can look at the Documentation once
 again and look at what needs to be changes. The comments are provided via the tooltip on the Field. Additionally
 the fields are marked with a corresponding (i) icon.
 
